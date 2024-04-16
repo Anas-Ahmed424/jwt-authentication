@@ -30,6 +30,7 @@ router.post('/login', async(req,res)=> {
 });
 
 router.get('/refresh_token',(req,res) => {
+    console.log('----> inside refresh token')
     try{
         const refreshToken = req.cookies.refresh_token;
         if(refreshToken == null) return res.status(401).json({error: 'Null refresh token'});
