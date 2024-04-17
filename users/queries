@@ -1,0 +1,7 @@
+const getUsers = "SELECT * FROM users";
+
+// module.exports = {
+// getUsers,
+// }
+
+export default {getUsers}
