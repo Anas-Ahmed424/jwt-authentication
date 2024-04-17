@@ -4,8 +4,9 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import {dirname,join} from 'path';
 import {fileURLToPath} from 'url';
-import usersRouter from './routes/users_routes.js'
-import authRouter from './routes/auth_routes.js'
+import usersRouter from './users/users_routes.js'
+import authRouter from './auth/auth_routes.js'
+import authenticateToken from './middleware/authorization.js';
 
 
 dotenv.config();
@@ -21,6 +22,7 @@ app.use(json());
 app.use(cookieParser());
 
 app.use('/', express.static(join(__dirname, 'public')));
+app.use(authenticateToken)
 app.use('/api/users',usersRouter);
 app.use('/api/auth',authRouter);
 
